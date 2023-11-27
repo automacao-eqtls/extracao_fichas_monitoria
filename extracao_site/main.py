@@ -17,7 +17,7 @@ class main:
         self.tempo_espera = time.time()
         self.caminho_relativo = os.path.dirname(__file__)
         self.data_atual = datetime.datetime.now()
-        self.dia_anterior = self.data_atual - datetime.timedelta(days=1)
+        self.dia_anterior = self.data_atual - datetime.timedelta(days=30)
 
     def configuracao_playwright(self, p):
         caminho_driver = os.path.dirname(self.caminho_relativo)
