@@ -1,13 +1,12 @@
 import os
 import pandas
-import datetime
 from static.registrar_consultar import registers
 
 class main:
     caminho_relativo = r'\\55ASPDCARQ01\55Atende\Administrativo\06 - Gerência Contact Center\03 - Call Center Sao Luis\02 - Monitoria de Qualidade\10.BASES'
     
-    def __init__(self, dia_anterior) -> None:
-        self.data_atual = dia_anterior
+    def __init__(self, data_extracao) -> None:
+        self.data_atual = data_extracao
         lista_de_arquivos = os.listdir(self.__class__.caminho_relativo)
         self.lista_de_arquivos = [os.path.join(self.__class__.caminho_relativo, linha) for linha in lista_de_arquivos if linha.endswith('.xls') and linha.startswith('{:02d}-{:04d}'.format(self.data_atual.month,self.data_atual.year))]
         self.conexao = registers()
@@ -35,7 +34,8 @@ class main:
         distribuidora = [contagem for contagem, linha in enumerate(distribuidora) if linha]
         protocolo = [contagem for contagem, linha in enumerate(protocolo) if linha]
         
-        lista_de_colunas = ['matricula', 'nome_funcionario', 'data da monitoria', 'data_ligacao', 'cod_monitoria', 'num_monitoria','perfil_monitoria', 'nome_monitor']
+        lista_de_colunas = ['matricula', 'nome_funcionario', 'data da monitoria', 'data_ligacao', 'cod_monitoria', 
+                            'num_monitoria','perfil_monitoria', 'nome_monitor']
         
         if len(assertividade) != 1:
             if nome_ficha == 'CNR - COBE - REGIONAL 2022':
@@ -43,7 +43,7 @@ class main:
             elif nome_ficha == 'CNR - SCOB - REGIONAL 2022':
                 assertividade = [assertividade[0]]
             else:
-                print(f'Assertividade difrente que o previsto = {len(assertividade)} - {nome_ficha}')
+                print(f'Assertividade diferente que o previsto = {len(assertividade)} - {nome_ficha}')
                 return leitura
             
         if len(distribuidora) > 1:
@@ -121,6 +121,9 @@ class main:
             df = self.deixando_no_modelo_datamart(df=df)
             df = self.colunas_adicionais(df=df, nome_ficha=nome_ficha)
             
+            df['ano'] = self.data_atual.year
+            df['mes'] = self.data_atual.month
+            
             if self.colunas == '':
                 self.colunas = df.columns.tolist()
                 colunas_string = ','.join(self.colunas)
@@ -128,3 +131,4 @@ class main:
             lista_insercao = df.values.tolist()
             for linha in lista_insercao:
                 self.conexao.registro_sucesso_list(self.tabela, colunas_string, linha)
+                

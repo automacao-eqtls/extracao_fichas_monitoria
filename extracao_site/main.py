@@ -13,11 +13,11 @@ class main:
     usuario_optimus = '5513000'
     senha_optimus = 'Elilimbar@19'
 
-    def __init__(self) -> None:
+    def __init__(self, data_dia_anterior) -> None:
         self.tempo_espera = time.time()
         self.caminho_relativo = os.path.dirname(__file__)
         self.data_atual = datetime.datetime.now()
-        self.dia_anterior = self.data_atual - datetime.timedelta(days=30)
+        self.dia_anterior = self.data_atual - datetime.timedelta(days=1)
 
     def configuracao_playwright(self, p):
         caminho_driver = os.path.dirname(self.caminho_relativo)

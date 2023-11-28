@@ -18,13 +18,16 @@ import datetime
 tabela = 'public.hist_bases'
 nome_do_relatorio = 'optimus_monitoria_site'
 
+
 dicionario = {
     'carimbo_tempo': datetime.datetime.now(),
     'nome_do_relatorio': nome_do_relatorio,
     'tempo_de_extracao_seg': time.time()
 }
 
-inst_main_extracao = site()
+data_dia_anterior = dicionario['carimbo_tempo'] - datetime.timedelta(days=1)
+
+inst_main_extracao = site(data_dia_anterior)
 
 inst_registers = registers()
 
@@ -51,7 +54,7 @@ dicionario = {
     'tempo_de_extracao_seg': time.time()
 }
 
-inst_main_extracao = insercao(dia_anterior=inst_main_extracao.dia_anterior)
+inst_main_extracao = insercao(data_extracao=data_dia_anterior)
 
 inst_registers = registers()
 
