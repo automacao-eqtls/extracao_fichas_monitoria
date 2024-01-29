@@ -58,6 +58,7 @@ class main:
         mes = self.__class__.meses[self.dia_anterior.month - 1]
         if self.dia_anterior.year != datetime.datetime.now().year:
             page.frame_locator("iframe[name=\"navMain\"]").locator("th[class=\"datepickerGoPrev\"]").click()
+        page.frame_locator("iframe[name=\"navMain\"]").locator("#rdItem_121").check()
         page.frame_locator("iframe[name=\"navMain\"]").locator("a:has-text(\"" + mes + "\")").click()
         page.frame_locator("iframe[name=\"navMain\"]").locator("#rdItem_150").check()
         page.frame_locator("iframe[name=\"navMain\"]").locator("#rdItem_121").check()

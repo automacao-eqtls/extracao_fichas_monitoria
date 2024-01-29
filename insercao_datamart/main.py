@@ -130,5 +130,4 @@ class main:
                 
             lista_insercao = df.values.tolist()
             for linha in lista_insercao:
-                self.conexao.registro_sucesso_list(self.tabela, colunas_string, linha)
-                
+                self.conexao.registro_sucesso_list(self.tabela, colunas_string, linha)           
