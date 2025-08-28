@@ -5,8 +5,8 @@ import os
 
 
 class registers:
-    usuario_datamart = '5507392'
-    senha_datamart = 'NEFARIAN@1654'
+    usuario_datamart = '5511670'
+    senha_datamart = 'Aequatorial85408@'
     nome_do_banco_de_dados_postgresql = 'datamart'
     ip_conexao_postgresql = '10.6.2.211'
 

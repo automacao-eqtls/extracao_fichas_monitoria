@@ -10,8 +10,8 @@ from playwright.sync_api import sync_playwright
 
 class main:
     meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
-    usuario_optimus = '5513000'
-    senha_optimus = 'Elilimbar@19'
+    usuario_optimus = '5512897'
+    senha_optimus = 'Equarorial@2025'
 
     def __init__(self, data_dia_anterior) -> None:
         self.tempo_espera = time.time()
