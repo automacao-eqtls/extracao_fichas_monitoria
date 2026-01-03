@@ -10,8 +10,8 @@ from playwright.sync_api import sync_playwright
 
 class main:
     meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez']
-    usuario_optimus = '5512897'
-    senha_optimus = 'Equarorial@2025'
+    usuario_optimus = '5510004'
+    senha_optimus = 'SFJ@n26ina00@'
 
     def __init__(self, data_dia_anterior) -> None:
         self.tempo_espera = time.time()
@@ -20,9 +20,7 @@ class main:
         self.dia_anterior = self.data_atual - datetime.timedelta(days=1)
 
     def configuracao_playwright(self, p):
-        caminho_driver = os.path.dirname(self.caminho_relativo)
-        caminho_driver = os.path.join(caminho_driver, 'venv', 'drivers_playwright', 'chromium-1067',
-                                      'chrome-win', 'chrome.exe')
+        caminho_driver = r"C:\Users\U5511670\AppData\Local\ms-playwright\chromium-1187\chrome-win\chrome.exe"
         browser = p.chromium.launch(headless=False, executable_path=caminho_driver)
         context1 = browser.new_context(accept_downloads=True)
         page = context1.new_page()

@@ -47,7 +47,7 @@ class main:
                 return leitura
             
         if len(distribuidora) > 1:
-            if nome_ficha == 'FICHA DE RECLAMAÇÃO - HABILIDADE DE TRATAMENTO - NOTA RC - 2022.':
+            if nome_ficha == 'FICHA - HABILIDADE DE TRATAMENTO 2025 - NOTA RC' or 'FICHA DA REC. HABILIDADE DE TRATAMENTO - NOTA RC':
                 distribuidora = [distribuidora[0]]
             else:
                 print(f'Distribuidora maior que o previsto = {len(distribuidora)} - {nome_ficha}')
@@ -107,6 +107,8 @@ class main:
     def run(self):
         self.conexao.resetando_mes(self.tabela, self.data_atual.month, self.data_atual.year)
         for caminho_ficha in self.lista_de_arquivos:
+            if 'FICHA DA REC. HABILIDADE DE TRATAMENTO' in caminho_ficha:
+                pass
             
             caminho_relativo_ficha = os.path.dirname(caminho_ficha)
             nome_ficha = caminho_ficha.replace(caminho_relativo_ficha, '')
