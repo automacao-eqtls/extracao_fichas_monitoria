@@ -28,7 +28,7 @@ class main:
     """
     
     # Caminho onde os arquivos Excel são salvos pela extração
-    caminho_relativo = r'C:\Users\sautomaeqtls\Documents\Docs monitorias'
+    caminho_relativo = r'\\EQTSPDSRCL01\planejamento_e_trafego\Automacao e Inovacao\Fichas_monitorias'
     
     def __init__(self, data_extracao) -> None:
         """
@@ -294,7 +294,7 @@ class main:
             # Lê o Excel
             df = self.leitura(caminho_ficha, nome_ficha)
             if df.shape[1] != 11:
-                print(f"❌ PULANDO: '{nome_ficha}' tem {df.shape[1]} colunas (esperado: 11)")
+                print(f" PULANDO: '{nome_ficha}' tem {df.shape[1]} colunas (esperado: 11)")
                 print(f"   Colunas encontradas: {df.columns.tolist()}")
                 continue
             

@@ -351,15 +351,15 @@ class main:
                     file_name = '{:02d}-{:04d}'.format(self.dia_anterior.month,
                                                        self.dia_anterior.year) + ' ' + ficha + '.xls'
                     
-                    destination_folder_path = r"C:\Users\sautomaeqtls\Documents\Docs monitorias"
+                    destination_folder_path = r"\\EQTSPDSRCL01\planejamento_e_trafego\Automacao e Inovacao\Fichas_monitorias"
                     time.sleep(3)
 
                     # Salva arquivo (remove barras do nome se houver)
                     download.save_as(os.path.join(destination_folder_path, str(file_name).replace('/', '')))
-                    print(f"✅ Arquivo salvo: {file_name}")
+                    print(f" Arquivo salvo: {file_name}")
                     
                 except Exception as e:
-                    print(f"❌ Erro ao baixar {ficha}: {str(e)}")
+                    print(f" Erro ao baixar {ficha}: {str(e)}")
                     
                 # Fecha popup
                 page_1.close()
